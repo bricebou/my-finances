@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/l10n/generated/l10n.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: L.localizationsDelegates,
+      supportedLocales: L.supportedLocales,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -84,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(L.of(context).page_home_title),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -105,6 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(L.of(context).page_home_title),
+            const SizedBox(height: 32,),
             const Text(
               'You have pushed the button this many times:',
             ),
