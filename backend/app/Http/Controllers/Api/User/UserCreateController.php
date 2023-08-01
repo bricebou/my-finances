@@ -26,6 +26,9 @@ class UserCreateController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
+            $user->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $user->name . '&size=256&background=random')
+                ->toMediaCollection('avatars');
+
             return response()->json([
                 'token' => $user->createToken(name: 'auth_token', expiresAt: now()->addDays(7))->plainTextToken,
             ]);

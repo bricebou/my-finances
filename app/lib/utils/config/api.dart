@@ -7,7 +7,9 @@ class ApiConfig {
 enum ApiEndpoints {
   login('/auth/login'),
   logout('/auth/logout'),
-  register('/auth/register');
+  register('/auth/register'),
+  user('/user'),
+  avatar('/user/avatar');
 
   const ApiEndpoints(this.path);
 

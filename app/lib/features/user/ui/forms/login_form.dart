@@ -1,9 +1,9 @@
 import 'package:app/core/exceptions/app_exceptions.dart';
+import 'package:app/core/exceptions/app_exceptions_translator.dart';
 import 'package:app/core/router/routes.dart';
 import 'package:app/features/main/ui/widgets/custom_snackbar.dart';
 import 'package:app/features/user/states/auth_controller.dart';
 import 'package:app/l10n/generated/l10n.dart';
-import 'package:app/utils/translators/app_exceptions_translator.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

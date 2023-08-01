@@ -92,6 +92,9 @@ class LFr extends L {
   String get snackbar_message_login_success => 'Vous vous êtes connecté avec succès.';
 
   @override
+  String get snackbar_message_logout_success => 'Vous vous êtes déconnecté avec succès.';
+
+  @override
   String get form_label_username => 'Nom';
 
   @override
@@ -108,4 +111,43 @@ class LFr extends L {
 
   @override
   String get form_button_login => 'Se connecter';
+
+  @override
+  String get error => 'Erreur';
+
+  @override
+  String get button_edit => 'Modifier';
+
+  @override
+  String get form_title_profile_edit => 'Modifiez votre profil';
+
+  @override
+  String get form_button_submit => 'Enregistrer';
+
+  @override
+  String get settings => 'Paramètres';
+
+  @override
+  String get settings_language => 'Langue';
+
+  @override
+  String get settings_theme => 'Thème';
+
+  @override
+  String get profile_actions_logout => 'Se déconnecter';
+
+  @override
+  String get profile_actions_destroy => 'Supprimer mon compte';
+
+  @override
+  String get button_cancel => 'Annuler';
+
+  @override
+  String get button_confirm => 'Confirmer';
+
+  @override
+  String get alert_title_confirm => 'Êtes-vous sûr·e...';
+
+  @override
+  String get profile_actions_destroy_confirm_message => '...de vouloir supprimer votre compte ?';
 }

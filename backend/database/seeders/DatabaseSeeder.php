@@ -21,10 +21,16 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
+        $user->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $user->name . '&size=256&background=random')
+            ->toMediaCollection('avatars');
+
         $user = User::create([
             'name' => 'salto',
             'email' => 'salto@example.com',
             'password' => Hash::make('Pa$$W0rd'),
         ]);
+
+        $user->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $user->name . '&size=256&background=random')
+            ->toMediaCollection('avatars');
     }
 }

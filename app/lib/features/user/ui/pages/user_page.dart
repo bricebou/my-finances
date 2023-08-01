@@ -1,45 +1,43 @@
-import 'package:app/features/user/states/auth_controller.dart';
+import 'package:app/core/exceptions/app_exceptions.dart';
+import 'package:app/core/exceptions/app_exceptions_translator.dart';
+import 'package:app/core/exceptions/app_exceptions_widget.dart';
+import 'package:app/features/user/states/user_controller.dart';
+import 'package:app/features/user/ui/pages/user_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UserPage extends ConsumerWidget {
+class UserPage extends ConsumerStatefulWidget {
   const UserPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _UserScreenState();
+}
+
+class _UserScreenState extends ConsumerState<UserPage> {
+  @override
+  Widget build(BuildContext context) {
+    final userController = ref.watch(userControllerProvider);
+
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24),
-                  child: Text('User Page',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Looks like you've got enough permissions to... pick up some rabbits 😍",
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-                const SizedBox(height: 40),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      ref.read(authControllerProvider.notifier).logout();
-                    },
-                    icon: const Icon(Icons.logout),
-                    label: const Text('Logout'),
-                  ),
-                ),
-              ],
-            ),
+      body: userController.when(
+        data: (data) => Center(
+          child: UserWidget(
+            user: data,
           ),
+        ),
+        error: (error, stacktrace) {
+          final exception = AppExceptionsTranslator(
+            context: context,
+            exception: error as AppException,
+          ).translate();
+          return Center(
+            child: AppExceptionWidget(
+              appException: exception,
+            ),
+          );
+        },
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
         ),
       ),
     );

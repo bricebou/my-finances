@@ -3,7 +3,10 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\User\UserCreateController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\User\UserDeleteController;
+use App\Http\Controllers\Api\User\UserShowController;
+use App\Http\Controllers\Api\User\UserUpdateController;
+use App\Http\Controllers\Api\User\UserUploadAvatarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +25,8 @@ Route::post('/auth/register', UserCreateController::class);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/auth/logout', LogoutController::class);
-});
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::get('/user', UserShowController::class);
+    Route::put('/user', UserUpdateController::class);
+    Route::delete('/user', UserDeleteController::class);
+    Route::post('/user/avatar', UserUploadAvatarController::class);
 });

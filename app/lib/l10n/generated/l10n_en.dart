@@ -92,6 +92,9 @@ class LEn extends L {
   String get snackbar_message_login_success => 'You have logged in successfully.';
 
   @override
+  String get snackbar_message_logout_success => 'You have logged out successfully.';
+
+  @override
   String get form_label_username => 'Username';
 
   @override
@@ -108,4 +111,43 @@ class LEn extends L {
 
   @override
   String get form_button_login => 'Log In';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get button_edit => 'Edit';
+
+  @override
+  String get form_title_profile_edit => 'Edit your profile';
+
+  @override
+  String get form_button_submit => 'Save';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get settings_language => 'Language';
+
+  @override
+  String get settings_theme => 'Theme';
+
+  @override
+  String get profile_actions_logout => 'Log Out';
+
+  @override
+  String get profile_actions_destroy => 'Delete my account';
+
+  @override
+  String get button_cancel => 'Cancel';
+
+  @override
+  String get button_confirm => 'Confirm';
+
+  @override
+  String get alert_title_confirm => 'Are you sure...';
+
+  @override
+  String get profile_actions_destroy_confirm_message => '...you want to delete your account?';
 }

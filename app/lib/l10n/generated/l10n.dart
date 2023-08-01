@@ -267,6 +267,12 @@ abstract class L {
   /// **'You have logged in successfully.'**
   String get snackbar_message_login_success;
 
+  /// No description provided for @snackbar_message_logout_success.
+  ///
+  /// In en, this message translates to:
+  /// **'You have logged out successfully.'**
+  String get snackbar_message_logout_success;
+
   /// No description provided for @form_label_username.
   ///
   /// In en, this message translates to:
@@ -302,6 +308,84 @@ abstract class L {
   /// In en, this message translates to:
   /// **'Log In'**
   String get form_button_login;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @button_edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get button_edit;
+
+  /// No description provided for @form_title_profile_edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit your profile'**
+  String get form_title_profile_edit;
+
+  /// No description provided for @form_button_submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get form_button_submit;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @settings_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settings_language;
+
+  /// No description provided for @settings_theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get settings_theme;
+
+  /// No description provided for @profile_actions_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get profile_actions_logout;
+
+  /// No description provided for @profile_actions_destroy.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get profile_actions_destroy;
+
+  /// No description provided for @button_cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get button_cancel;
+
+  /// No description provided for @button_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get button_confirm;
+
+  /// No description provided for @alert_title_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure...'**
+  String get alert_title_confirm;
+
+  /// No description provided for @profile_actions_destroy_confirm_message.
+  ///
+  /// In en, this message translates to:
+  /// **'...you want to delete your account?'**
+  String get profile_actions_destroy_confirm_message;
 }
 
 class _LDelegate extends LocalizationsDelegate<L> {
