@@ -1,26 +1,19 @@
 import 'dart:async';
 
+import 'package:app/core/exceptions/app_exceptions.dart';
+import 'package:app/core/storage/storage_helpers.dart';
 import 'package:app/features/user/data/entities/auth.dart';
+import 'package:app/features/user/data/repositories/auth_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_controller.g.dart';
-
-/// A mock of an Authenticated User
-const _dummyUser = Auth.signedIn(
-  token: 'some-updated-secret-auth-token',
-);
 
 /// This controller is an [AsyncNotifier] that holds and handles our authentication state
 @riverpod
 class AuthController extends _$AuthController {
-  late SharedPreferences _sharedPreferences;
-  static const _sharedPrefsKey = 'token';
-
   @override
   Future<Auth> build() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-
     _persistenceRefreshLogic();
 
     return _loginRecoveryAttempt();
@@ -30,44 +23,45 @@ class AuthController extends _$AuthController {
   /// If _anything_ goes wrong, deletes the internal token and returns a [User.signedOut].
   Future<Auth> _loginRecoveryAttempt() async {
     try {
-      final savedToken = _sharedPreferences.getString(_sharedPrefsKey);
-      if (savedToken == null)
-        throw const UnauthorizedException('No auth token found');
+      final savedToken = ref.read(storageHelpersProvider).getAuthToken();
+      if (savedToken == null) {
+        throw const AppException(message: 'app_error_no_auth_token_found');
+      }
 
-      return await _loginWithToken(savedToken);
+      return Auth.signedIn(token: savedToken);
     } catch (_, __) {
-      await _sharedPreferences.remove(_sharedPrefsKey);
+      ref.read(storageHelpersProvider).unsetAuthToken();
       return const Auth.signedOut();
     }
   }
 
   /// Mock of a request performed on logout (might be common, or not, whatevs).
   Future<void> logout() async {
-    await Future<void>.delayed(networkRoundTripTime);
-    state = const AsyncValue<Auth>.data(Auth.signedOut());
+    state = const AsyncLoading();
+
+    try {
+      final auth = await ref.watch(authRepositoryProvider).logout();
+      state = AsyncData<Auth>(auth);
+    } on DioException catch (e) {
+      final appError = AppException.fromDioException(e);
+      state = AsyncError(appError, e.stackTrace);
+      throw appError;
+    }
   }
 
   /// Mock of a successful login attempt, which results come from the network.
-  Future<void> login(String email, String password) async {
-    state = await AsyncValue.guard<Auth>(() async {
-      return Future.delayed(
-        networkRoundTripTime,
-        () => _dummyUser,
-      );
-    });
-  }
-
-  /// Mock of a login request performed with a saved token.
-  /// If such request fails, this method will throw an [UnauthorizedException].
-  Future<Auth> _loginWithToken(String token) async {
-    final logInAttempt = await Future.delayed(
-      networkRoundTripTime,
-      () => true, // edit this if you wanna play around
-    );
-
-    if (logInAttempt) return _dummyUser;
-
-    throw const UnauthorizedException('401 Unauthorized or something');
+  Future<void> login({required String email, required String password}) async {
+    state = const AsyncLoading();
+    try {
+      final auth = await ref
+          .watch(authRepositoryProvider)
+          .login(email: email, password: password);
+      state = AsyncData<Auth>(auth);
+    } on DioException catch (e) {
+      final appError = AppException.fromDioException(e);
+      state = AsyncError(appError, e.stackTrace);
+      throw appError;
+    }
   }
 
   /// Internal method used to listen authentication state changes.
@@ -78,27 +72,18 @@ class AuthController extends _$AuthController {
     ref.listenSelf((_, next) {
       if (next.isLoading) return;
       if (next.hasError) {
-        _sharedPreferences.remove(_sharedPrefsKey);
+        ref.read(storageHelpersProvider).unsetAuthToken();
         return;
       }
 
       next.requireValue.map<void>(
-        signedIn: (signedIn) =>
-            _sharedPreferences.setString(_sharedPrefsKey, signedIn.token),
+        signedIn: (signedIn) => ref
+            .read(storageHelpersProvider)
+            .setAuthToken(token: signedIn.token),
         signedOut: (signedOut) {
-          _sharedPreferences.remove(_sharedPrefsKey);
+          ref.read(storageHelpersProvider).unsetAuthToken();
         },
       );
     });
   }
 }
-
-/// Simple mock of a 401 exception
-class UnauthorizedException implements Exception {
-  const UnauthorizedException(this.message);
-
-  final String message;
-}
-
-/// Mock of the duration of a network request
-final networkRoundTripTime = Duration(milliseconds: 750);

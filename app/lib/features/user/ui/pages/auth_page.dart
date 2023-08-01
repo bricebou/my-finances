@@ -1,4 +1,4 @@
-import 'package:app/features/user/states/auth_controller.dart';
+import 'package:app/features/user/ui/forms/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -38,14 +38,7 @@ class AuthScreenSmall extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton(
-                onPressed: () =>
-                    ref.read(authControllerProvider.notifier).login(
-                          'myEmail',
-                          'myPassword',
-                        ),
-                child: const Text('Login'),
-              ),
+              LoginForm(),
             ],
           ),
         ),
@@ -80,14 +73,38 @@ class AuthScreenMedium extends ConsumerWidget {
               child: IntrinsicHeight(
                 child: Column(
                   children: [
-                    ElevatedButton(
-                      onPressed: () =>
-                          ref.read(authControllerProvider.notifier).login(
-                                'myEmail',
-                                'myPassword',
-                              ),
-                      child: const Text('Login'),
-                    ),
+                    LoginForm(),
+                    // ElevatedButton(
+                    //   onPressed: () => ref
+                    //       .read(authControllerProvider.notifier)
+                    //       .login(
+                    //         'gamora@example.com',
+                    //         'Pa\$\$W0rd',
+                    //       )
+                    //       .then((value) => CustomSnackbar.display(
+                    //           context,
+                    //           CustomSnackbar(
+                    //             type: CustomSnackbarType.success,
+                    //             title: L.of(context).snackbar_title_success,
+                    //             message: L
+                    //                 .of(context)
+                    //                 .snackbar_message_login_success,
+                    //           )))
+                    //       .onError((AppException error, stackTrace) {
+                    //     final translatedError = AppExceptionsTranslator(
+                    //             context: context, exception: error)
+                    //         .translate();
+                    //     CustomSnackbar.display(
+                    //         context,
+                    //         CustomSnackbar(
+                    //             type: CustomSnackbarType.error,
+                    //             title: L.of(context).snackbar_title_error,
+                    //             message: translatedError.message,
+                    //             listStrings:
+                    //                 translatedError.errors?.values.toList()));
+                    //   }),
+                    //   child: const Text('Login'),
+                    // ),
                   ],
                 ),
               ),

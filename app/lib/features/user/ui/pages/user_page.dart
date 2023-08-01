@@ -30,7 +30,9 @@ class UserPage extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24),
                   child: ElevatedButton.icon(
-                    onPressed: ref.read(authControllerProvider.notifier).logout,
+                    onPressed: () {
+                      ref.read(authControllerProvider.notifier).logout();
+                    },
                     icon: const Icon(Icons.logout),
                     label: const Text('Logout'),
                   ),

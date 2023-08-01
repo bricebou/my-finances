@@ -1,5 +1,6 @@
 import 'package:app/core/router/router_listenable.dart';
 import 'package:app/core/router/routes.dart';
+import 'package:app/core/storage/storage_helpers.dart';
 import 'package:app/l10n/generated/l10n.dart';
 import 'package:app/utils/config/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,10 @@ Future<void> main() async {
   final sharedPreferences = await SharedPreferences.getInstance();
 
   runApp(
-    const ProviderScope(
+    ProviderScope(
+      overrides: [
+        sharedPreferenceProvider.overrideWith((ref) => sharedPreferences)
+      ],
       child: MyApp(),
     ),
   );

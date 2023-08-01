@@ -93,11 +93,179 @@ abstract class L {
     Locale('fr')
   ];
 
+  /// No description provided for @api_error_bad_certificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Bad Certificate'**
+  String get api_error_bad_certificate;
+
+  /// No description provided for @api_error_bad_request.
+  ///
+  /// In en, this message translates to:
+  /// **'Bad Request'**
+  String get api_error_bad_request;
+
+  /// No description provided for @api_error_connection_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Error'**
+  String get api_error_connection_error;
+
+  /// No description provided for @api_error_connection_timeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Timeout'**
+  String get api_error_connection_timeout;
+
+  /// No description provided for @api_error_default.
+  ///
+  /// In en, this message translates to:
+  /// **'Oups... Something went wrong'**
+  String get api_error_default;
+
+  /// No description provided for @api_error_forbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Forbidden'**
+  String get api_error_forbidden;
+
+  /// No description provided for @api_error_not_found.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Found'**
+  String get api_error_not_found;
+
+  /// No description provided for @api_error_receive_timeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive Timeout'**
+  String get api_error_receive_timeout;
+
+  /// No description provided for @api_error_request_canceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Cancelled'**
+  String get api_error_request_canceled;
+
+  /// No description provided for @api_error_send_timeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Timeout'**
+  String get api_error_send_timeout;
+
+  /// No description provided for @api_error_server_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Server Error'**
+  String get api_error_server_error;
+
+  /// No description provided for @api_error_unauthorized.
+  ///
+  /// In en, this message translates to:
+  /// **'Unauthorized'**
+  String get api_error_unauthorized;
+
+  /// No description provided for @api_error_unsupported_method.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsupported Method'**
+  String get api_error_unsupported_method;
+
+  /// No description provided for @api_login_error_no_record.
+  ///
+  /// In en, this message translates to:
+  /// **'No record matches your request'**
+  String get api_login_error_no_record;
+
+  /// No description provided for @api_validation_avatar_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar upload must be an image'**
+  String get api_validation_avatar_image;
+
+  /// No description provided for @api_validation_avatar_max.
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar upload file must be under 512 Ko'**
+  String get api_validation_avatar_max;
+
+  /// No description provided for @api_validation_avatar_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar upload is required'**
+  String get api_validation_avatar_required;
+
+  /// No description provided for @api_validation_email_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email should be a conform email address'**
+  String get api_validation_email_email;
+
+  /// No description provided for @api_validation_email_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Email field is required'**
+  String get api_validation_email_required;
+
+  /// No description provided for @api_validation_email_unique.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is registered already'**
+  String get api_validation_email_unique;
+
+  /// No description provided for @api_validation_errors.
+  ///
+  /// In en, this message translates to:
+  /// **'Errors while validating the submitted form'**
+  String get api_validation_errors;
+
+  /// No description provided for @api_validation_name_min.
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be 3 characters long minimum'**
+  String get api_validation_name_min;
+
+  /// No description provided for @api_validation_name_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Username field is required'**
+  String get api_validation_name_required;
+
+  /// No description provided for @api_validation_password_min.
+  ///
+  /// In en, this message translates to:
+  /// **'Password mut be 12 characters long minimum'**
+  String get api_validation_password_min;
+
+  /// No description provided for @api_validation_password_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Password field is required'**
+  String get api_validation_password_required;
+
   /// No description provided for @page_home_title.
   ///
   /// In en, this message translates to:
   /// **'Welcome!'**
   String get page_home_title;
+
+  /// No description provided for @snackbar_title_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get snackbar_title_error;
+
+  /// No description provided for @snackbar_title_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get snackbar_title_success;
+
+  /// No description provided for @snackbar_message_login_success.
+  ///
+  /// In en, this message translates to:
+  /// **'You have logged in successfully.'**
+  String get snackbar_message_login_success;
 }
 
 class _LDelegate extends LocalizationsDelegate<L> {

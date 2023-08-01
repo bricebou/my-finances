@@ -26,7 +26,6 @@ mixin _$Budget {
 abstract class $BudgetCopyWith<$Res> {
   factory $BudgetCopyWith(Budget value, $Res Function(Budget) then) =
       _$BudgetCopyWithImpl<$Res, Budget>;
-
   @useResult
   $Res call({String id});
 }
@@ -38,7 +37,6 @@ class _$BudgetCopyWithImpl<$Res, $Val extends Budget>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -60,7 +58,6 @@ class _$BudgetCopyWithImpl<$Res, $Val extends Budget>
 abstract class _$$_BudgetCopyWith<$Res> implements $BudgetCopyWith<$Res> {
   factory _$$_BudgetCopyWith(_$_Budget value, $Res Function(_$_Budget) then) =
       __$$_BudgetCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String id});
@@ -123,7 +120,6 @@ abstract class _Budget implements Budget {
 
   @override
   String get id;
-
   @override
   @JsonKey(ignore: true)
   _$$_BudgetCopyWith<_$_Budget> get copyWith =>
