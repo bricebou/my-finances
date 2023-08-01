@@ -42,6 +42,8 @@
   "settings": "Paramètres",
   "settings_language": "Langue",
   "settings_theme": "Thème",
+  "settings_theme_dark": "Sombre",
+  "settings_theme_light": "Clair",
   "profile_actions_logout": "Se déconnecter",
   "profile_actions_destroy": "Supprimer mon compte",
   "button_cancel": "Annuler",

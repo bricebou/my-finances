@@ -134,6 +134,12 @@ class LFr extends L {
   String get settings_theme => 'Thème';
 
   @override
+  String get settings_theme_dark => 'Sombre';
+
+  @override
+  String get settings_theme_light => 'Clair';
+
+  @override
   String get profile_actions_logout => 'Se déconnecter';
 
   @override

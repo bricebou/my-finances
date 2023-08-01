@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,8 +30,27 @@ class StorageHelpers {
   void unsetAuthToken() {
     sharedPreferences.remove(PrefKeys.sharedAuthTokenKey);
   }
+
+  bool isDarkModeEnabled() {
+    return sharedPreferences.getBool(PrefKeys.sharedDarkModeKey) ??
+        ThemeMode.system.name == 'dark';
+  }
+
+  void setDarkModeEnabled({required bool isDark}) {
+    sharedPreferences.setBool(PrefKeys.sharedDarkModeKey, isDark);
+  }
+
+  String? isSelectedLocale() {
+    return sharedPreferences.getString(PrefKeys.sharedLanguageKey);
+  }
+
+  void setSelectedLocale({required String locale}) {
+    sharedPreferences.setString(PrefKeys.sharedLanguageKey, locale);
+  }
 }
 
 mixin PrefKeys {
   static const String sharedAuthTokenKey = "AuthToken";
+  static const String sharedDarkModeKey = "isDarkModeEnabled";
+  static const String sharedLanguageKey = "SelectedLanguage";
 }

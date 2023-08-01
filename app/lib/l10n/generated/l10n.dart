@@ -351,6 +351,18 @@ abstract class L {
   /// **'Theme'**
   String get settings_theme;
 
+  /// No description provided for @settings_theme_dark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get settings_theme_dark;
+
+  /// No description provided for @settings_theme_light.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get settings_theme_light;
+
   /// No description provided for @profile_actions_logout.
   ///
   /// In en, this message translates to:

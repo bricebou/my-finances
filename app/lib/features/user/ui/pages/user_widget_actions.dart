@@ -2,18 +2,31 @@ import 'package:app/core/exceptions/app_exceptions.dart';
 import 'package:app/core/exceptions/app_exceptions_translator.dart';
 import 'package:app/features/main/ui/widgets/custom_snackbar.dart';
 import 'package:app/features/user/states/auth_controller.dart';
+import 'package:app/features/user/states/settings_controller.dart';
 import 'package:app/features/user/states/user_controller.dart';
 import 'package:app/l10n/generated/l10n.dart';
 import 'package:app/utils/config/app_colors.dart';
+import 'package:app/utils/config/app_locales.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class UserWidgetActions extends ConsumerWidget {
   const UserWidgetActions({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(isDarkProvider);
+    final selectedLocale = ref.watch(setLocaleProvider).value;
+
+    var initialLocaleIndex = 0;
+    if (selectedLocale == SupportedLocales.english.locale) {
+      initialLocaleIndex = 0;
+    } else if (selectedLocale == SupportedLocales.french.locale) {
+      initialLocaleIndex = 1;
+    }
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -41,17 +54,17 @@ class UserWidgetActions extends ConsumerWidget {
                   Text(
                     L.of(context).settings_language,
                   ),
-                  // ToggleSwitch(
-                  //   initialLabelIndex: initialLocaleIndex,
-                  //   totalSwitches: 2,
-                  //   minWidth: 80,
-                  //   labels: const ["English", "Français"],
-                  //   onToggle: (index) {
-                  //     ref
-                  //         .read(localeStateProvider.notifier)
-                  //         .setLocale(SupportedLocales.values[index!].locale);
-                  //   },
-                  // ),
+                  ToggleSwitch(
+                    initialLabelIndex: initialLocaleIndex,
+                    totalSwitches: 2,
+                    minWidth: 80,
+                    labels: const ["English", "Français"],
+                    onToggle: (index) {
+                      ref
+                          .read(setLocaleProvider.notifier)
+                          .setLocale(SupportedLocales.values[index!].locale);
+                    },
+                  ),
                 ],
               ),
               const SizedBox(
@@ -63,18 +76,18 @@ class UserWidgetActions extends ConsumerWidget {
                   Text(
                     L.of(context).settings_theme,
                   ),
-                  // ToggleSwitch(
-                  //   initialLabelIndex: isDark ? 0 : 1,
-                  //   totalSwitches: 2,
-                  //   minWidth: 80,
-                  //   labels: [
-                  //     AppLocalizations.of(context)!.settings_theme_dark,
-                  //     AppLocalizations.of(context)!.settings_theme_light
-                  //   ],
-                  //   onToggle: (index) {
-                  //     ref.read(isDarkProvider.notifier).toggleTheme();
-                  //   },
-                  // ),
+                  ToggleSwitch(
+                    initialLabelIndex: isDark ? 0 : 1,
+                    totalSwitches: 2,
+                    minWidth: 80,
+                    labels: [
+                      L.of(context).settings_theme_dark,
+                      L.of(context).settings_theme_light
+                    ],
+                    onToggle: (index) {
+                      ref.read(isDarkProvider.notifier).toggleTheme();
+                    },
+                  ),
                 ],
               ),
             ],

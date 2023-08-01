@@ -1,6 +1,7 @@
 import 'package:app/core/router/router_listenable.dart';
 import 'package:app/core/router/routes.dart';
 import 'package:app/core/storage/storage_helpers.dart';
+import 'package:app/features/user/states/settings_controller.dart';
 import 'package:app/l10n/generated/l10n.dart';
 import 'package:app/utils/config/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.watch(routerListenableProvider.notifier);
+    final isDark = ref.watch(isDarkProvider);
 
     final key = useRef(GlobalKey<NavigatorState>(debugLabel: 'routerKey'));
     final router = useMemoized(
@@ -47,9 +49,11 @@ class MyApp extends HookConsumerWidget {
     return MaterialApp.router(
       localizationsDelegates: L.localizationsDelegates,
       supportedLocales: L.supportedLocales,
+      locale: ref.watch(setLocaleProvider).value,
       routerConfig: router,
       theme: themeDataLight,
       darkTheme: themeDataDark,
+      themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
       title: 'My Finances',
     );
   }

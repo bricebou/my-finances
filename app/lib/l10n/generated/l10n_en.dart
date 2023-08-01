@@ -134,6 +134,12 @@ class LEn extends L {
   String get settings_theme => 'Theme';
 
   @override
+  String get settings_theme_dark => 'Dark';
+
+  @override
+  String get settings_theme_light => 'Light';
+
+  @override
   String get profile_actions_logout => 'Log Out';
 
   @override
