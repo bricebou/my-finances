@@ -1,4 +1,5 @@
 import 'package:app/core/exceptions/app_exceptions.dart';
+import 'package:app/core/router/routes.dart';
 import 'package:app/features/main/ui/widgets/custom_snackbar.dart';
 import 'package:app/features/user/states/auth_controller.dart';
 import 'package:app/l10n/generated/l10n.dart';
@@ -49,9 +50,9 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             children: [
               TextFormField(
                 controller: emailEditingController,
-                decoration: const InputDecoration(
-                  labelText: 'form_label_email',
-                  labelStyle: TextStyle(color: Colors.black54),
+                decoration: InputDecoration(
+                  labelText: L.of(context).form_label_email,
+                  labelStyle: const TextStyle(color: Colors.black54),
                 ),
                 style: const TextStyle(color: Colors.black),
                 validator: validatorEmail,
@@ -62,7 +63,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               TextFormField(
                 controller: passwordEditingController,
                 decoration: InputDecoration(
-                  labelText: 'form_label_password',
+                  labelText: L.of(context).form_label_password,
                   labelStyle: const TextStyle(color: Colors.black54),
                   suffixIcon: IconButton(
                     onPressed: _togglePasswordView,
@@ -136,19 +137,19 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                     const SizedBox(
                       width: 6,
                     ),
-                    const Text('login'),
+                    Text(L.of(context).form_button_login),
                   ],
                 ),
               ),
               const SizedBox(
                 height: 24,
               ),
-              // TextButton(
-              //   onPressed: () {
-              //     const RegisterRoute().go(context);
-              //   },
-              //   child: const Text('form_button_register'),
-              // ),
+              TextButton(
+                onPressed: () {
+                  const RegisterRoute().go(context);
+                },
+                child: Text(L.of(context).form_button_register),
+              ),
             ],
           ),
         ),

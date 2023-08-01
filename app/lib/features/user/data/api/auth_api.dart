@@ -15,8 +15,10 @@ class AuthApi {
 
   final DioClient _dioClient;
 
-  Future<Response<dynamic>> login(
-      {required String email, required String password}) async {
+  Future<Response<dynamic>> login({
+    required String email,
+    required String password,
+  }) async {
     try {
       final response = await _dioClient.post(
         ApiEndpoints.login.path,
@@ -31,6 +33,22 @@ class AuthApi {
   Future<Response<dynamic>> logout() async {
     try {
       final response = await _dioClient.get(ApiEndpoints.logout.path);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response<dynamic>> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response = await _dioClient.post(
+        ApiEndpoints.register.path,
+        data: {'name': name, 'email': email, 'password': password},
+      );
       return response;
     } catch (e) {
       rethrow;

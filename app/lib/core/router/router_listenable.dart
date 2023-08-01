@@ -55,7 +55,8 @@ class RouterListenable extends _$RouterListenable implements Listenable {
       return _isAuth ? BudgetsRoute.path : LoginRoute.path;
     }
 
-    final isLoggingIn = state.matchedLocation == LoginRoute.path;
+    final isLoggingIn = state.matchedLocation == LoginRoute.path ||
+        state.matchedLocation == RegisterRoute.path;
     if (isLoggingIn) return _isAuth ? BudgetsRoute.path : null;
 
     return _isAuth ? null : SplashRoute.path;

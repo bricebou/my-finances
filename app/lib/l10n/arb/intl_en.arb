@@ -27,5 +27,11 @@
   "page_home_title": "Welcome!",
   "snackbar_title_error": "Error",
   "snackbar_title_success": "Success",
-  "snackbar_message_login_success": "You have logged in successfully."
+  "snackbar_message_login_success": "You have logged in successfully.",
+  "form_label_username": "Username",
+  "form_label_email": "Email",
+  "form_label_password": "Password",
+  "form_label_password_repeat": "Confirm Password",
+  "form_button_register": "Register",
+  "form_button_login": "Log In"
 }

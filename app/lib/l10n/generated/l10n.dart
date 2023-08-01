@@ -266,6 +266,42 @@ abstract class L {
   /// In en, this message translates to:
   /// **'You have logged in successfully.'**
   String get snackbar_message_login_success;
+
+  /// No description provided for @form_label_username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get form_label_username;
+
+  /// No description provided for @form_label_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get form_label_email;
+
+  /// No description provided for @form_label_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get form_label_password;
+
+  /// No description provided for @form_label_password_repeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get form_label_password_repeat;
+
+  /// No description provided for @form_button_register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get form_button_register;
+
+  /// No description provided for @form_button_login.
+  ///
+  /// In en, this message translates to:
+  /// **'Log In'**
+  String get form_button_login;
 }
 
 class _LDelegate extends LocalizationsDelegate<L> {

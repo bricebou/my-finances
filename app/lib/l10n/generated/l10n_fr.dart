@@ -90,4 +90,22 @@ class LFr extends L {
 
   @override
   String get snackbar_message_login_success => 'Vous vous êtes connecté avec succès.';
+
+  @override
+  String get form_label_username => 'Nom';
+
+  @override
+  String get form_label_email => 'Email';
+
+  @override
+  String get form_label_password => 'Mot de passe';
+
+  @override
+  String get form_label_password_repeat => 'Confirmation du mot de passe';
+
+  @override
+  String get form_button_register => 'Créer un compte';
+
+  @override
+  String get form_button_login => 'Se connecter';
 }

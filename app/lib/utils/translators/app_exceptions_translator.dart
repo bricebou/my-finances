@@ -53,6 +53,10 @@ class AppExceptionsTranslator {
       exception.errors!.forEach((key, value) {
         if (value.runtimeType == String) {
           updatedErrors[value.toString()] = translatedErrors[value.toString()]!;
+        } else if (value.runtimeType == List<dynamic>) {
+          for (final v in value as List<dynamic>) {
+            updatedErrors[v.toString()] = translatedErrors[v.toString()]!;
+          }
         }
       });
     }

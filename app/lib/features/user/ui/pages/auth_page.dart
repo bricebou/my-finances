@@ -1,45 +1,62 @@
 import 'package:app/features/user/ui/forms/login_form.dart';
+import 'package:app/features/user/ui/forms/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class AuthPage extends ConsumerWidget {
-  const AuthPage({super.key});
+  const AuthPage({super.key, required this.type});
+
+  final String type;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     late ConsumerStatefulWidget authForm;
 
+    switch (type) {
+      case 'login':
+        authForm = const LoginForm();
+        break;
+      case 'register':
+        authForm = const RegisterForm();
+        break;
+      default:
+        authForm = const LoginForm();
+        break;
+    }
+
     return ScreenTypeLayout.builder(
-      mobile: (_) => AuthScreenSmall(),
+      mobile: (_) => AuthScreenSmall(form: authForm),
       tablet: (_) => OrientationLayoutBuilder(
-        landscape: (context) => AuthScreenMedium(),
-        portrait: (context) => AuthScreenSmall(),
+        landscape: (context) => AuthScreenMedium(form: authForm),
+        portrait: (context) => AuthScreenSmall(form: authForm),
       ),
-      desktop: (_) => AuthScreenMedium(),
+      desktop: (_) => AuthScreenMedium(form: authForm),
     );
   }
 }
 
 class AuthScreenSmall extends ConsumerWidget {
-  const AuthScreenSmall({super.key});
+  const AuthScreenSmall({super.key, required this.form});
+
+  final ConsumerStatefulWidget form;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: Container(
+      body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(
-                  "assets/images/steve-johnson-WVUrbhWtRNM-unsplash.jpg"),
-              fit: BoxFit.cover),
+            image: AssetImage(
+              'assets/images/steve-johnson-WVUrbhWtRNM-unsplash.jpg',
+            ),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              LoginForm(),
-            ],
+            children: [form],
           ),
         ),
       ),
@@ -48,7 +65,9 @@ class AuthScreenSmall extends ConsumerWidget {
 }
 
 class AuthScreenMedium extends ConsumerWidget {
-  const AuthScreenMedium({super.key});
+  const AuthScreenMedium({super.key, required this.form});
+
+  final ConsumerStatefulWidget form;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -57,55 +76,22 @@ class AuthScreenMedium extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
-            flex: 1, // 20%
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(
-                        "assets/images/steve-johnson-WVUrbhWtRNM-unsplash.jpg"),
-                    fit: BoxFit.cover),
+                  image: AssetImage(
+                    'assets/images/steve-johnson-WVUrbhWtRNM-unsplash.jpg',
+                  ),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           Expanded(
-            flex: 1, // 60%
             child: Center(
               child: IntrinsicHeight(
                 child: Column(
-                  children: [
-                    LoginForm(),
-                    // ElevatedButton(
-                    //   onPressed: () => ref
-                    //       .read(authControllerProvider.notifier)
-                    //       .login(
-                    //         'gamora@example.com',
-                    //         'Pa\$\$W0rd',
-                    //       )
-                    //       .then((value) => CustomSnackbar.display(
-                    //           context,
-                    //           CustomSnackbar(
-                    //             type: CustomSnackbarType.success,
-                    //             title: L.of(context).snackbar_title_success,
-                    //             message: L
-                    //                 .of(context)
-                    //                 .snackbar_message_login_success,
-                    //           )))
-                    //       .onError((AppException error, stackTrace) {
-                    //     final translatedError = AppExceptionsTranslator(
-                    //             context: context, exception: error)
-                    //         .translate();
-                    //     CustomSnackbar.display(
-                    //         context,
-                    //         CustomSnackbar(
-                    //             type: CustomSnackbarType.error,
-                    //             title: L.of(context).snackbar_title_error,
-                    //             message: translatedError.message,
-                    //             listStrings:
-                    //                 translatedError.errors?.values.toList()));
-                    //   }),
-                    //   child: const Text('Login'),
-                    // ),
-                  ],
+                  children: [form],
                 ),
               ),
             ),

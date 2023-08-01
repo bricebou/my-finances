@@ -27,5 +27,11 @@
   "page_home_title": "Bienvenue !",
   "snackbar_title_error": "Erreur",
   "snackbar_title_success": "Succès",
-  "snackbar_message_login_success": "Vous vous êtes connecté avec succès."
+  "snackbar_message_login_success": "Vous vous êtes connecté avec succès.",
+  "form_label_username": "Nom",
+  "form_label_email": "Email",
+  "form_label_password": "Mot de passe",
+  "form_label_password_repeat": "Confirmation du mot de passe",
+  "form_button_register": "Créer un compte",
+  "form_button_login": "Se connecter"
 }

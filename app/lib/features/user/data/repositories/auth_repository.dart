@@ -31,4 +31,18 @@ class AuthRepository {
       rethrow;
     }
   }
+
+  Future<Auth> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response =
+          await api.register(name: name, email: email, password: password);
+      return Auth.signedIn(token: response.data['token'].toString());
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

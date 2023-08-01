@@ -90,4 +90,22 @@ class LEn extends L {
 
   @override
   String get snackbar_message_login_success => 'You have logged in successfully.';
+
+  @override
+  String get form_label_username => 'Username';
+
+  @override
+  String get form_label_email => 'Email';
+
+  @override
+  String get form_label_password => 'Password';
+
+  @override
+  String get form_label_password_repeat => 'Confirm Password';
+
+  @override
+  String get form_button_register => 'Register';
+
+  @override
+  String get form_button_login => 'Log In';
 }

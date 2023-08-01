@@ -86,4 +86,22 @@ class AuthController extends _$AuthController {
       );
     });
   }
+
+  Future<void> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    state = const AsyncLoading();
+    try {
+      final auth = await ref
+          .watch(authRepositoryProvider)
+          .register(name: name, email: email, password: password);
+      state = AsyncData<Auth>(auth);
+    } on DioException catch (e) {
+      final appError = AppException.fromDioException(e);
+      state = AsyncError(appError, e.stackTrace);
+      throw appError;
+    }
+  }
 }

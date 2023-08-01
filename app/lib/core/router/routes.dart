@@ -90,6 +90,18 @@ class LoginRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const AuthPage();
+    return const AuthPage(type: 'login');
+  }
+}
+
+@TypedGoRoute<RegisterRoute>(path: RegisterRoute.path)
+class RegisterRoute extends GoRouteData {
+  const RegisterRoute();
+
+  static const path = '/register';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const AuthPage(type: 'register');
   }
 }
