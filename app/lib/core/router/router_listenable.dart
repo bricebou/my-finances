@@ -52,12 +52,12 @@ class RouterListenable extends _$RouterListenable implements Listenable {
     final isSplash = state.matchedLocation == SplashRoute.path;
 
     if (isSplash) {
-      return _isAuth ? BudgetsRoute.path : LoginRoute.path;
+      return _isAuth ? BudgetLastRoute.path : LoginRoute.path;
     }
 
     final isLoggingIn = state.matchedLocation == LoginRoute.path ||
         state.matchedLocation == RegisterRoute.path;
-    if (isLoggingIn) return _isAuth ? BudgetsRoute.path : null;
+    if (isLoggingIn) return _isAuth ? BudgetLastRoute.path : null;
 
     return _isAuth ? null : SplashRoute.path;
   }

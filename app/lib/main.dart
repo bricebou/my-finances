@@ -35,21 +35,24 @@ class MyApp extends HookConsumerWidget {
 
     final key = useRef(GlobalKey<NavigatorState>(debugLabel: 'routerKey'));
     final router = useMemoized(
-      () => GoRouter(
-        navigatorKey: key.value,
-        refreshListenable: notifier,
-        initialLocation: SplashRoute.path,
-        debugLogDiagnostics: true,
-        routes: $appRoutes,
-        redirect: notifier.redirect,
-      ),
+          () =>
+          GoRouter(
+            navigatorKey: key.value,
+            refreshListenable: notifier,
+            initialLocation: SplashRoute.path,
+            debugLogDiagnostics: true,
+            routes: $appRoutes,
+            redirect: notifier.redirect,
+          ),
       [notifier],
     );
 
     return MaterialApp.router(
       localizationsDelegates: L.localizationsDelegates,
       supportedLocales: L.supportedLocales,
-      locale: ref.watch(setLocaleProvider).value,
+      locale: ref
+          .watch(setLocaleProvider)
+          .value,
       routerConfig: router,
       theme: themeDataLight,
       darkTheme: themeDataDark,

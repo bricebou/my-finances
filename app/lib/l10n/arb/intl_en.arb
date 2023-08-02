@@ -49,5 +49,7 @@
   "button_cancel": "Cancel",
   "button_confirm": "Confirm",
   "alert_title_confirm": "Are you sure...",
-  "profile_actions_destroy_confirm_message": "...you want to delete your account?"
+  "profile_actions_destroy_confirm_message": "...you want to delete your account?",
+  "drawer_item_budgets_all": "All budgets",
+  "drawer_button_budget_add": "Add budget"
 }

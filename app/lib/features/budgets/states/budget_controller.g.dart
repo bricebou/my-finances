@@ -6,7 +6,7 @@ part of 'budget_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$budgetControllerHash() => r'90efa745dc51e9785cc74b36fa9d2cb4d1e1e504';
+String _$budgetControllerHash() => r'0b1cb4911eaa41297891dcdfe6cff2c552a27258';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 
 abstract class _$BudgetController
     extends BuildlessAutoDisposeAsyncNotifier<Budget> {
-  late final String id;
+  late final String? id;
 
   Future<Budget> build(
-    String id,
+    String? id,
   );
 }
 
@@ -49,7 +49,7 @@ class BudgetControllerFamily extends Family<AsyncValue<Budget>> {
 
   /// See also [BudgetController].
   BudgetControllerProvider call(
-    String id,
+    String? id,
   ) {
     return BudgetControllerProvider(
       id,
@@ -99,7 +99,7 @@ class BudgetControllerProvider
               BudgetControllerFamily._allTransitiveDependencies,
         );
 
-  final String id;
+  final String? id;
 
   @override
   bool operator ==(Object other) {

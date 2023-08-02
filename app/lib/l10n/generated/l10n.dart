@@ -398,6 +398,18 @@ abstract class L {
   /// In en, this message translates to:
   /// **'...you want to delete your account?'**
   String get profile_actions_destroy_confirm_message;
+
+  /// No description provided for @drawer_item_budgets_all.
+  ///
+  /// In en, this message translates to:
+  /// **'All budgets'**
+  String get drawer_item_budgets_all;
+
+  /// No description provided for @drawer_button_budget_add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add budget'**
+  String get drawer_button_budget_add;
 }
 
 class _LDelegate extends LocalizationsDelegate<L> {

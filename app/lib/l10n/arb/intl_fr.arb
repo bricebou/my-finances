@@ -49,5 +49,7 @@
   "button_cancel": "Annuler",
   "button_confirm": "Confirmer",
   "alert_title_confirm": "Êtes-vous sûr·e...",
-  "profile_actions_destroy_confirm_message": "...de vouloir supprimer votre compte ?"
+  "profile_actions_destroy_confirm_message": "...de vouloir supprimer votre compte ?",
+  "drawer_item_budgets_all": "Tous les budgets",
+  "drawer_button_budget_add": "Créer un budget"
 }

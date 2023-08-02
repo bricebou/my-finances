@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
+use App\Http\Controllers\Api\Budget\BudgetIndexController;
+use App\Http\Controllers\Api\Budget\BudgetShowController;
+use App\Http\Controllers\Api\Budget\BudgetShowLatestController;
 use App\Http\Controllers\Api\User\UserCreateController;
 use App\Http\Controllers\Api\User\UserDeleteController;
 use App\Http\Controllers\Api\User\UserShowController;
@@ -29,4 +32,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/user', UserUpdateController::class);
     Route::delete('/user', UserDeleteController::class);
     Route::post('/user/avatar', UserUploadAvatarController::class);
+
+    Route::get('/budget', BudgetIndexController::class);
+    Route::get('/budget/latest', BudgetShowLatestController::class);
+    Route::get('/budget/{budget}', BudgetShowController::class);
 });

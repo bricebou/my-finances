@@ -11,7 +11,6 @@ part 'user_controller.g.dart';
 class UserController extends _$UserController {
   @override
   Future<User> build() async {
-    print("BUILD");
     return getUser();
   }
 

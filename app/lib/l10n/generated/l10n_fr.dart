@@ -156,4 +156,10 @@ class LFr extends L {
 
   @override
   String get profile_actions_destroy_confirm_message => '...de vouloir supprimer votre compte ?';
+
+  @override
+  String get drawer_item_budgets_all => 'Tous les budgets';
+
+  @override
+  String get drawer_button_budget_add => 'Créer un budget';
 }

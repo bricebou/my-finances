@@ -14,7 +14,7 @@ class CustomNavigation {
   void goTo(int index, BuildContext context) {
     switch (index) {
       case 0:
-        const BudgetsRoute().go(context);
+        const BudgetRoute('').go(context);
         break;
       case 1:
         const ProfileRoute().go(context);

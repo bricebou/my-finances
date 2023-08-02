@@ -6,7 +6,7 @@ part of 'router_listenable.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerListenableHash() => r'4c7d3411fc8cdcd5c5ba3f01267ad99a4c590a33';
+String _$routerListenableHash() => r'9e3888671900504c31f73156b92f2f601c43a8f8';
 
 /// A [Listenable] implemented via an [AsyncNotifier].
 /// [GoRouter] accepts a [Listenable] to refresh its internal state, so this is kinda mandatory.

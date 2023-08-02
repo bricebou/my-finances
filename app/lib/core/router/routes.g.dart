@@ -39,13 +39,23 @@ RouteBase get $mainRoute => ShellRouteData.$route(
       navigatorKey: MainRoute.$navigatorKey,
       factory: $MainRouteExtension._fromState,
       routes: [
-        GoRouteData.$route(
-          path: '/budget',
+        ShellRouteData.$route(
+          navigatorKey: BudgetsRoute.$navigatorKey,
           factory: $BudgetsRouteExtension._fromState,
           routes: [
             GoRouteData.$route(
-              path: ':id',
-              factory: $BudgetRouteExtension._fromState,
+              path: '/budget',
+              factory: $BudgetLastRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'list',
+                  factory: $BudgetsListRouteExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: ':id',
+                  factory: $BudgetRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -62,9 +72,32 @@ extension $MainRouteExtension on MainRoute {
 
 extension $BudgetsRouteExtension on BudgetsRoute {
   static BudgetsRoute _fromState(GoRouterState state) => const BudgetsRoute();
+}
+
+extension $BudgetLastRouteExtension on BudgetLastRoute {
+  static BudgetLastRoute _fromState(GoRouterState state) =>
+      const BudgetLastRoute();
 
   String get location => GoRouteData.$location(
         '/budget',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $BudgetsListRouteExtension on BudgetsListRoute {
+  static BudgetsListRoute _fromState(GoRouterState state) =>
+      const BudgetsListRoute();
+
+  String get location => GoRouteData.$location(
+        '/budget/list',
       );
 
   void go(BuildContext context) => context.go(location);

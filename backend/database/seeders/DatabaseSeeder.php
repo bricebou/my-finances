@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Budget;
+use App\Models\Income;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -14,23 +16,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::create([
+        $gamora = User::create([
             'name' => 'gamora',
             'email' => 'gamora@example.com',
             'password' => Hash::make('Pa$$W0rd'),
             'email_verified_at' => now(),
         ]);
 
-        $user->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $user->name . '&size=256&background=random')
+        $gamora->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $gamora->name . '&size=256&background=random')
             ->toMediaCollection('avatars');
 
-        $user = User::create([
+        $salto = User::create([
             'name' => 'salto',
             'email' => 'salto@example.com',
             'password' => Hash::make('Pa$$W0rd'),
         ]);
 
-        $user->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $user->name . '&size=256&background=random')
+        $salto->addMediaFromUrl('https://ui-avatars.com/api/?name=' . $salto->name . '&size=256&background=random')
             ->toMediaCollection('avatars');
+
+
+        $users = [$gamora, $salto];
+
+        foreach ($users as $user) {
+            Budget::factory(5)
+                ->withUser($user)
+                ->create()
+                ->each(function (Budget $budget) {
+                    Income::factory(rand(1, 3))->withBudget($budget)->create();
+                });
+        }
     }
 }

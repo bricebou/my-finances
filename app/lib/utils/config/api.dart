@@ -9,7 +9,9 @@ enum ApiEndpoints {
   logout('/auth/logout'),
   register('/auth/register'),
   user('/user'),
-  avatar('/user/avatar');
+  avatar('/user/avatar'),
+  budget('/budget'),
+  budgetLatest('/budget/latest');
 
   const ApiEndpoints(this.path);
 

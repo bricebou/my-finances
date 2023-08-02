@@ -156,4 +156,10 @@ class LEn extends L {
 
   @override
   String get profile_actions_destroy_confirm_message => '...you want to delete your account?';
+
+  @override
+  String get drawer_item_budgets_all => 'All budgets';
+
+  @override
+  String get drawer_button_budget_add => 'Add budget';
 }
